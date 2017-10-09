@@ -7,7 +7,7 @@ public class Ship : MonoBehaviour
     private static float ACCELERATION_RATIO = 4f;
     private static float TURN_SPEED = 2f;
 
-    public void Accelerate()
+    public void ThurstForward()
     {
         GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.up * ACCELERATION_RATIO);
     }
@@ -20,5 +20,10 @@ public class Ship : MonoBehaviour
     public void TurnRight()
     {
         GetComponent<Rigidbody2D>().rotation -= TURN_SPEED;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        gameObject.SetActive(false);
     }
 }

@@ -9,16 +9,17 @@ public class GameManager : MonoBehaviour
 
     private Ship PlayerShip { get; set; }
 
-	void Start ()
+    private void Start ()
     {
         PlayerShip = Instantiate(shipPrefab);
 	}
 
-	void Update ()
+
+    private void ReadKeyboardInput()
     {
         if (Input.GetKey(KeyCode.W))
         {
-            PlayerShip.Accelerate();
+            PlayerShip.ThurstForward();
         }
         if (Input.GetKey(KeyCode.A))
         {
@@ -28,5 +29,28 @@ public class GameManager : MonoBehaviour
         {
             PlayerShip.TurnRight();
         }
+    }
+
+    private void ReadControllerInput()
+    {
+        if (Input.GetButton("Fire2"))
+        {
+            PlayerShip.ThurstForward();
+        }
+        if (Input.GetButton("Left"))
+        {
+            PlayerShip.TurnLeft();
+        }
+        if (Input.GetButton("Right"))
+        {
+            PlayerShip.TurnRight();
+        }
+    }
+
+
+    private void FixedUpdate ()
+    {
+        ReadKeyboardInput();
+        ReadControllerInput();
     }
 }

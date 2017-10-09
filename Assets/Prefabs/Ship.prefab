@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4432526130268548}
   - component: {fileID: 114571208995535012}
   - component: {fileID: 212675282973308674}
-  - component: {fileID: 60788771421884184}
   - component: {fileID: 50355774600367386}
+  - component: {fileID: 60442899890364368}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -59,11 +59,11 @@ Rigidbody2D:
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 1
+  m_Interpolate: 2
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &60788771421884184
+--- !u!60 &60442899890364368
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -79,7 +79,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -87,21 +87,21 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.12, y: -0.11}
-      - {x: 0.02, y: 0.16}
-      - {x: -0.03, y: 0.16}
-      - {x: -0.06, y: 0.11}
-      - {x: -0.13, y: -0.14}
-      - {x: -0.13, y: -0.16}
-      - {x: -0.08, y: -0.16}
-      - {x: -0.06, y: -0.11}
-      - {x: 0.06, y: -0.16}
-      - {x: 0.12, y: -0.16}
-    - - {x: -0.02, y: -0.02}
-      - {x: 0, y: 0.049999997}
-      - {x: -0.01, y: 0.049999997}
-      - {x: -0.01, y: 0.04}
-      - {x: 0, y: 0.03}
+    - - {x: 0.375, y: -0.34375}
+      - {x: 0.0625, y: 0.5}
+      - {x: -0.09375, y: 0.5}
+      - {x: -0.1875, y: 0.34375}
+      - {x: -0.40625, y: -0.4375}
+      - {x: -0.40625, y: -0.5}
+      - {x: -0.25, y: -0.5}
+      - {x: -0.1875, y: -0.34375}
+      - {x: 0.1875, y: -0.5}
+      - {x: 0.375, y: -0.5}
+    - - {x: -0.0625, y: -0.0625}
+      - {x: 0, y: 0.15625}
+      - {x: -0.03125, y: 0.15625}
+      - {x: -0.03125, y: 0.125}
+      - {x: 0, y: 0.09375}
       - {x: 0, y: 0}
 --- !u!114 &114571208995535012
 MonoBehaviour:
