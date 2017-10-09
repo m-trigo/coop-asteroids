@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
         PlayerShip = Instantiate(shipPrefab);
 	}
 
-
     private void ReadKeyboardInput()
     {
         if (Input.GetKey(KeyCode.W))
@@ -46,7 +45,6 @@ public class GameManager : MonoBehaviour
             PlayerShip.TurnRight();
         }
     }
-
 
     private void FixedUpdate ()
     {
