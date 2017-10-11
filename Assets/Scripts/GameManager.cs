@@ -12,12 +12,13 @@ public class GameManager : MonoBehaviour
 
     private void Start ()
     {
-        PlayerShip = Instantiate(shipPrefab);
         for(int i = 0; i < 5; i++)
         {
             Instantiate(meteorPrefab);
         }
-	}
+
+        PlayerShip = Instantiate(shipPrefab);
+    }
 
     private void ReadKeyboardInput()
     {
@@ -32,6 +33,10 @@ public class GameManager : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             PlayerShip.TurnRight();
+        }
+        if (Input.GetKey(KeyCode.Space))
+        {
+            PlayerShip.Fire();
         }
     }
 
@@ -48,6 +53,10 @@ public class GameManager : MonoBehaviour
         if (Input.GetButton("Right") || Input.GetAxisRaw("Horizontal") > 0)
         {
             PlayerShip.TurnRight();
+        }
+        if (Input.GetButton("Fire1"))
+        {
+            PlayerShip.Fire();
         }
     }
 

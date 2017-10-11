@@ -38,7 +38,7 @@ public class Meteor : MonoBehaviour
         transform.position = new Vector2(xOfSpawn, yOfSpawn);
     }
 
-    private void Start ()
+    private void Awake ()
     {
         Initialize();
     }
@@ -50,6 +50,14 @@ public class Meteor : MonoBehaviour
             || transform.position.x < -distance || transform.position.y < -distance)
         {
             Initialize();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Bullet"))
+        {
+            gameObject.SetActive(false);
         }
     }
 }
