@@ -6,12 +6,17 @@ public class GameManager : MonoBehaviour
 {
     // Editor Side Dependency Injection
     public Ship shipPrefab;
+    public Meteor meteorPrefab;
 
     private Ship PlayerShip { get; set; }
 
     private void Start ()
     {
         PlayerShip = Instantiate(shipPrefab);
+        for(int i = 0; i < 5; i++)
+        {
+            Instantiate(meteorPrefab);
+        }
 	}
 
     private void ReadKeyboardInput()
@@ -36,11 +41,11 @@ public class GameManager : MonoBehaviour
         {
             PlayerShip.ThurstForward();
         }
-        if (Input.GetButton("Left"))
+        if (Input.GetButton("Left") || Input.GetAxisRaw("Horizontal") < 0)
         {
             PlayerShip.TurnLeft();
         }
-        if (Input.GetButton("Right"))
+        if (Input.GetButton("Right") || Input.GetAxisRaw("Horizontal") > 0)
         {
             PlayerShip.TurnRight();
         }

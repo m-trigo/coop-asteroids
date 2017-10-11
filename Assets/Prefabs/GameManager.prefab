@@ -53,3 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipPrefab: {fileID: 114571208995535012, guid: 7fca052d97a84b04d8ed8c780271dda1,
     type: 2}
+  meteorPrefab: {fileID: 114451412595134260, guid: 9f6642b014df939449a3cf2d08b5f547,
+    type: 2}
