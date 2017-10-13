@@ -22,6 +22,11 @@ public class GameManager : MonoBehaviour
 
     private void ReadKeyboardInput()
     {
+        if (!PlayerShip.enabled)
+        {
+            return;
+        }
+
         if (Input.GetKey(KeyCode.W))
         {
             PlayerShip.ThurstForward();
@@ -34,10 +39,11 @@ public class GameManager : MonoBehaviour
         {
             PlayerShip.TurnRight();
         }
-        if (Input.GetKey(KeyCode.Space))
-        {
+        if (Input.GetKeyDown(KeyCode.S))
+        {        
             PlayerShip.Fire();
         }
+
     }
 
     private void FixedUpdate ()

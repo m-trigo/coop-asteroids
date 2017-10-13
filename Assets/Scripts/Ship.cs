@@ -7,11 +7,9 @@ public class Ship : MonoBehaviour
     public GameObject firingPoint;
     public Bullet bulletPrefab;
 
-    private static float ACCELERATION_RATIO = 10f;
-    private static float TURN_SPEED = 5f;
-    private static float BULLET_SPEED = 20F;
-
-    public Bullet CurrentBullet { get; set; }
+    private const float ACCELERATION_RATIO = 10f;
+    private const float TURN_SPEED = 5f;
+    private const float BULLET_SPEED = 20F;
 
     public void ThurstForward()
     {
@@ -30,18 +28,8 @@ public class Ship : MonoBehaviour
 
     public void Fire()
     {
-        if (CurrentBullet == null)
-        {
-            CurrentBullet = Instantiate(bulletPrefab);
-            CurrentBullet.Source = this;
-            CurrentBullet.transform.position = firingPoint.transform.position;
-            CurrentBullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(Vector2.up) * BULLET_SPEED;
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log(collision.gameObject.name);
-        gameObject.SetActive(false);
+        Bullet shot = Instantiate(bulletPrefab);
+        shot.transform.position = firingPoint.transform.position;
+        shot.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(Vector2.up) * BULLET_SPEED;
     }
 }
