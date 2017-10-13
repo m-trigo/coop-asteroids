@@ -7,8 +7,8 @@ public class Ship : MonoBehaviour
     public GameObject firingPoint;
     public Bullet bulletPrefab;
 
-    private static float ACCELERATION_RATIO = 4f;
-    private static float TURN_SPEED = 2f;
+    private static float ACCELERATION_RATIO = 10f;
+    private static float TURN_SPEED = 5f;
     private static float BULLET_SPEED = 20F;
 
     public Bullet CurrentBullet { get; set; }

@@ -46,8 +46,9 @@ public class Meteor : MonoBehaviour
     private void Update()
     {
         float distance = PlayArea.SIZE/2 + Size;
-        if (transform.position.x > distance || transform.position.y > distance
-            || transform.position.x < -distance || transform.position.y < -distance)
+        bool xIsOutOfBounds = transform.position.x > distance || transform.position.x < -distance;
+        bool yIsOutOfBounds = transform.position.y > distance || transform.position.y < -distance;
+        if (xIsOutOfBounds || yIsOutOfBounds)
         {
             Initialize();
         }
