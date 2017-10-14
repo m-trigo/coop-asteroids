@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class Meteor : MonoBehaviour
 {
-    private float Size { get; set; }
+    public Sprite[] Sprites;
+
     private const float MAX_SPEED = 4f;
     private const float MIN_SPEED = 1f;
-    
+
+    private int Size { get; set; }
+
     private void Initialize()
     {
-        Size = Random.Range(0.5f, 1.5f);
-        transform.localScale = new Vector3(Size, Size, 1);
-        
+        Size = Random.Range(0, Sprites.Length);
+
+        GetComponent<SpriteRenderer>().sprite = Sprites[Size];
+        PolygonCollider2D collider = gameObject.AddComponent<PolygonCollider2D>();
+        collider.isTrigger = true;
+
         float speed = Random.Range(MIN_SPEED, MAX_SPEED);
         float velocityAngle = Random.Range(0, Mathf.PI * 2);
         float vx = Mathf.Cos(velocityAngle) * speed;
@@ -25,40 +31,16 @@ public class Meteor : MonoBehaviour
         if (isVertical)
         {
             bool isGoingUp = vy > 0;
-            yOfSpawn = (PlayArea.SIZE/2 + Size) * (isGoingUp ? -1 : 1);
-            xOfSpawn = Random.Range(-0.5f, 0.5f) * PlayArea.SIZE;
+            yOfSpawn = 11 * (isGoingUp ? -1 : 1);
+            xOfSpawn = Random.Range(-0.5f, 0.5f) * 11;
         }
         else
         {
             bool isGoingRight = vx > 0;
-            xOfSpawn = (PlayArea.SIZE/2 + Size) * (isGoingRight ? -1 : 1);
-            yOfSpawn = Random.Range(-0.5f, 0.5f) * PlayArea.SIZE;
-        } 
+            xOfSpawn = 11 * (isGoingRight ? -1 : 1);
+            yOfSpawn = Random.Range(-0.5f, 0.5f) * 11;
+        }
 
         transform.position = new Vector2(xOfSpawn, yOfSpawn);
-    }
-
-    private void Awake ()
-    {
-        Initialize();
-    }
-
-    private void Update()
-    {
-        float distance = PlayArea.SIZE/2 + Size;
-        bool xIsOutOfBounds = transform.position.x > distance || transform.position.x < -distance;
-        bool yIsOutOfBounds = transform.position.y > distance || transform.position.y < -distance;
-        if (xIsOutOfBounds || yIsOutOfBounds)
-        {
-            Initialize();
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Bullet"))
-        {
-            gameObject.SetActive(false);
-        }
     }
 }

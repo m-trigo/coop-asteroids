@@ -10,12 +10,15 @@ public class GameManager : MonoBehaviour
 
     private Ship PlayerShip { get; set; }
 
+    public Vector2 ViewPortOrigin { get; private set; }
+    public float ScreenWidth { get; private set; }
+    public float ScreenHeight { get; private set; }
+
     private void Start ()
     {
-        for(int i = 0; i < 5; i++)
-        {
-            Instantiate(meteorPrefab);
-        }
+        ViewPortOrigin = Camera.main.ViewportToWorldPoint(Vector2.zero);
+        ScreenWidth = Camera.main.ViewportToWorldPoint(Vector2.right).x - ViewPortOrigin.x;
+        ScreenHeight = Camera.main.ViewportToWorldPoint(Vector2.up).y - ViewPortOrigin.y;
 
         PlayerShip = Instantiate(shipPrefab);
     }
@@ -39,14 +42,14 @@ public class GameManager : MonoBehaviour
         {
             PlayerShip.TurnRight();
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.Space))
         {        
             PlayerShip.Fire();
         }
 
     }
 
-    private void FixedUpdate ()
+    private void Update ()
     {
         ReadKeyboardInput();
     }

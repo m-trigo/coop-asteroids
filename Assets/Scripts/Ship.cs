@@ -8,8 +8,10 @@ public class Ship : MonoBehaviour
     public Bullet bulletPrefab;
 
     private const float ACCELERATION_RATIO = 10f;
-    private const float TURN_SPEED = 5f;
+    private const float TURN_SPEED = 6f;
     private const float BULLET_SPEED = 20F;
+
+    private int Rotate { get; set; }
 
     public void ThurstForward()
     {
@@ -18,16 +20,23 @@ public class Ship : MonoBehaviour
 
     public void TurnLeft()
     {
-        GetComponent<Rigidbody2D>().rotation += TURN_SPEED;
+        Rotate = +1;
     }
 
     public void TurnRight()
     {
-        GetComponent<Rigidbody2D>().rotation -= TURN_SPEED;
+        Rotate = -1;
+    }
+
+    private void FixedUpdate()
+    {
+        GetComponent<Rigidbody2D>().rotation += TURN_SPEED * Rotate;
+        Rotate = 0;
     }
 
     public void Fire()
     {
+        return;
         Bullet shot = Instantiate(bulletPrefab);
         shot.transform.position = firingPoint.transform.position;
         shot.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(Vector2.up) * BULLET_SPEED;
