@@ -22,8 +22,9 @@ GameObject:
   - component: {fileID: 50734699213615574}
   - component: {fileID: 114451412595134260}
   - component: {fileID: 212362349808133904}
+  - component: {fileID: 60095923322988326}
   m_Layer: 0
-  m_Name: Meteor
+  m_Name: MeteorLarge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,6 +63,37 @@ Rigidbody2D:
   m_SleepingMode: 2
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!60 &60095923322988326
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1026352958744556}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 2, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.90821123, y: -0.5689268}
+      - {x: -0.061275482, y: -0.91555214}
+      - {x: 0.9085727, y: -0.5168276}
+      - {x: 0.7151542, y: 0.68483067}
+      - {x: 0.47336245, y: 0.90294576}
+      - {x: -0.45635223, y: 0.9096556}
+      - {x: -0.9084163, y: 0.23464489}
 --- !u!114 &114451412595134260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -73,10 +105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f01aa388948e24e41953054d94d03df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sprites:
-  - {fileID: 21300000, guid: 070e823c6c8362b44a01cb634043c4a8, type: 3}
-  - {fileID: 21300000, guid: ee7f7fcf542dcfc4a9d14e0cdeeb6b9a, type: 3}
-  - {fileID: 21300000, guid: 3b95009f18e2abc4a818fe7880ab0230, type: 3}
 --- !u!212 &212362349808133904
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -109,13 +137,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 664cf8fa98e0dd644873a35f8a5d74f9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0

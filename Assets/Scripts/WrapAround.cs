@@ -16,13 +16,13 @@ public class WrapAround : MonoBehaviour
         if (Direction.Equals("Horizontal"))
         {
             float y = collision.transform.position.y;
-            y = -y + (y > 0 ? 1 : -1);
+            y = (GameManager.ScreenHeight + 2) * (y > 0 ? -0.5f : 0.5f);
             collision.transform.position = new Vector2(collision.transform.position.x, y);
         }
         else
         {
             float x = collision.transform.position.x;
-            x = -x + (x > 0 ? 1 : -1);
+            x = (GameManager.ScreenWidth + 2) * (x > 0 ? -0.5f : 0.5f);
             collision.transform.position = new Vector2(x, collision.transform.position.y);
         }
     }

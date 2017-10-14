@@ -3,22 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Meteor : MonoBehaviour
-{
-    public Sprite[] Sprites;
-
+{ 
     private const float MAX_SPEED = 4f;
     private const float MIN_SPEED = 1f;
 
-    private int Size { get; set; }
+    private void Start()
+    {
+        Initialize();
+    }
 
     private void Initialize()
     {
-        Size = Random.Range(0, Sprites.Length);
-
-        GetComponent<SpriteRenderer>().sprite = Sprites[Size];
-        PolygonCollider2D collider = gameObject.AddComponent<PolygonCollider2D>();
-        collider.isTrigger = true;
-
         float speed = Random.Range(MIN_SPEED, MAX_SPEED);
         float velocityAngle = Random.Range(0, Mathf.PI * 2);
         float vx = Mathf.Cos(velocityAngle) * speed;
@@ -31,14 +26,14 @@ public class Meteor : MonoBehaviour
         if (isVertical)
         {
             bool isGoingUp = vy > 0;
-            yOfSpawn = 11 * (isGoingUp ? -1 : 1);
-            xOfSpawn = Random.Range(-0.5f, 0.5f) * 11;
+            yOfSpawn = GameManager.ScreenHeight * (isGoingUp ? -0.5f : 0.5f) + (isGoingUp ? -1f : 1f);
+            xOfSpawn = Random.Range(-0.5f, 0.5f) * GameManager.ScreenWidth;
         }
         else
         {
             bool isGoingRight = vx > 0;
-            xOfSpawn = 11 * (isGoingRight ? -1 : 1);
-            yOfSpawn = Random.Range(-0.5f, 0.5f) * 11;
+            xOfSpawn = GameManager.ScreenWidth * (isGoingRight ? -0.5f : 0.5f) + (isGoingRight ? -1 : 1);
+            yOfSpawn = Random.Range(-0.5f, 0.5f) * GameManager.ScreenHeight;
         }
 
         transform.position = new Vector2(xOfSpawn, yOfSpawn);

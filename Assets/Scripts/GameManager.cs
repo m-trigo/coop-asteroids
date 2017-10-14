@@ -11,9 +11,9 @@ public class GameManager : MonoBehaviour
     private Ship PlayerShip { get; set; }
 
     public Vector2 ViewPortOrigin { get; private set; }
-    public float ScreenWidth { get; private set; }
-    public float ScreenHeight { get; private set; }
-
+    public static float ScreenWidth { get; private set; }
+    public static float ScreenHeight { get; private set; }
+   
     private void Start ()
     {
         ViewPortOrigin = Camera.main.ViewportToWorldPoint(Vector2.zero);
@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
         ScreenHeight = Camera.main.ViewportToWorldPoint(Vector2.up).y - ViewPortOrigin.y;
 
         PlayerShip = Instantiate(shipPrefab);
+        Instantiate(meteorPrefab);
     }
 
     private void ReadKeyboardInput()
