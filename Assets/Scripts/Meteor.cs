@@ -7,6 +7,9 @@ public class Meteor : MonoBehaviour
     private const float MAX_SPEED = 4f;
     private const float MIN_SPEED = 1f;
 
+    private float QUARTER_CIRCLE_DEGREES = 90;
+    private float HALF_CIRCLE_DEGREES = 180;
+
     private void Start()
     {
         Initialize();
@@ -14,6 +17,16 @@ public class Meteor : MonoBehaviour
 
     private void Initialize()
     {
+        int xMirroring = Random.Range(0, 2);
+        int yMirroring = Random.Range(0, 2);
+        int zMirroring = Random.Range(0, 5);
+
+        // TODO: Find reference to angle constantss
+        transform.Rotate(Vector3.right, xMirroring * HALF_CIRCLE_DEGREES);
+        transform.Rotate(Vector3.up, yMirroring * HALF_CIRCLE_DEGREES);
+        transform.Rotate(Vector3.forward, zMirroring * QUARTER_CIRCLE_DEGREES);
+
+
         float speed = Random.Range(MIN_SPEED, MAX_SPEED);
         float velocityAngle = Random.Range(0, Mathf.PI * 2);
         float vx = Mathf.Cos(velocityAngle) * speed;

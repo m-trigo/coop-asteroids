@@ -34,11 +34,21 @@ public class Ship : MonoBehaviour
         Rotate = 0;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("WrapAround"))
+        {
+            return;
+        }
+
+        Destroy(gameObject);
+    }
+
     public void Fire()
     {
-        return;
         Bullet shot = Instantiate(bulletPrefab);
         shot.transform.position = firingPoint.transform.position;
+        shot.transform.localRotation = transform.localRotation;
         shot.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(Vector2.up) * BULLET_SPEED;
     }
 }
