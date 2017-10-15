@@ -20,10 +20,7 @@ public class GameManager : MonoBehaviour
     private const int SPAWN_PERIOD_IN_SECONDS = 3;
 
     private float timeSinceLastSpawn = 0;
-
-    private bool CanP1Shoot { get; set; }
-    private bool CanP2Shoot { get; set; }
-
+    
     private void Start ()
     {
         Cursor.visible = false;
@@ -39,9 +36,6 @@ public class GameManager : MonoBehaviour
         {
             SpawnMeteor();
         }
-
-        CanP1Shoot = true;
-        CanP2Shoot = true;
     }
 
     private void SpawnMeteor()
@@ -50,85 +44,57 @@ public class GameManager : MonoBehaviour
         Instantiate(meteorPrefabs[whichMeteor]).Initialize();
     }
 
-    private void ReadKeyboardInput(Ship playerShip)
+
+    private void ReadP1KeyboardInput()
     {
-        if (playerShip == null)
+        if (Player1Ship == null)
         {
             return;
         }
 
         if (Input.GetKey(KeyCode.W))
         {
-            playerShip.ThurstForward();
+            Player1Ship.ThurstForward();
         }
         if (Input.GetKey(KeyCode.A))
         {
-            playerShip.TurnLeft();
+            Player1Ship.TurnLeft();
         }
         if (Input.GetKey(KeyCode.D))
         {
-            playerShip.TurnRight();
+            Player1Ship.TurnRight();
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            playerShip.Fire();
+            Player1Ship.Fire();
         }
-
     }
 
-    private void ReadControllerInput(Ship playerShip, int joystickNumber)
+    private void ReadP2KeyboardInput()
     {
-        if (playerShip == null)
+        if (Player2Ship == null)
         {
             return;
         }
 
-        string radical = "P" + joystickNumber + (joystickNumber == 1 ? "PS4" : "360");
-
-        if (Input.GetAxis(radical + "VerticalDpad") > 0 || Input.GetButton(radical + "Thrust"))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
-            playerShip.ThurstForward();
+            Player2Ship.ThurstForward();
         }
-        if (Input.GetAxis(radical + "HorizontalDpad") < 0)
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
-            playerShip.TurnLeft();
+            Player2Ship.TurnLeft();
         }
-        if (Input.GetAxis(radical + "HorizontalDpad") > 0)
+        if (Input.GetKey(KeyCode.RightArrow))
         {
-            playerShip.TurnRight();
+            Player2Ship.TurnRight();
         }
-        if (Input.GetButton(radical + "Fire"))
+        if (Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            if (joystickNumber == 1)
-            {
-                if (CanP1Shoot)
-                {
-                    playerShip.Fire();
-                    CanP1Shoot = false;
-                }
-            }
-            else
-            {
-                if (CanP2Shoot)
-                {
-                    playerShip.Fire();
-                    CanP2Shoot = false;
-                }
-            }
+            Player2Ship.Fire();
         }
-        if (!Input.GetButton(radical + "Fire"))
-        {
-            if (joystickNumber == 1)
-            {
-                CanP1Shoot = true;
-            }
-            else
-            {
-                CanP2Shoot = true;
-            }
-        }
-
     }
+
 
     private void Update ()
     {
@@ -137,8 +103,8 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("Main");
         }
 
-        ReadControllerInput(Player1Ship, 1);
-        ReadControllerInput(Player2Ship, 2);
+        ReadP1KeyboardInput();
+        ReadP2KeyboardInput();
 
         timeSinceLastSpawn += Time.deltaTime;
         if (timeSinceLastSpawn > SPAWN_PERIOD_IN_SECONDS)
