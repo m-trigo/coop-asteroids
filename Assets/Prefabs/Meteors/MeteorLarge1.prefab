@@ -19,10 +19,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4094655732802254}
-  - component: {fileID: 50734699213615574}
-  - component: {fileID: 114451412595134260}
   - component: {fileID: 212362349808133904}
+  - component: {fileID: 50734699213615574}
   - component: {fileID: 60095923322988326}
+  - component: {fileID: 114451412595134260}
   m_Layer: 0
   m_Name: MeteorLarge1
   m_TagString: Untagged
@@ -105,6 +105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f01aa388948e24e41953054d94d03df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  childMeteors:
+  - {fileID: 114070221190586118, guid: 8f25f732e77a9364492f3a67e17fb205, type: 2}
 --- !u!212 &212362349808133904
 SpriteRenderer:
   m_ObjectHideFlags: 1

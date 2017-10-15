@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     private void SpawnMeteor()
     {
         int whichMeteor = Random.Range(0, meteorPrefabs.Length);
-        Instantiate(meteorPrefabs[whichMeteor]);
+        Instantiate(meteorPrefabs[whichMeteor]).Initialize();
     }
 
     private void ReadKeyboardInput()

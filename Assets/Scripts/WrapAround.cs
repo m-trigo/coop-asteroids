@@ -8,11 +8,6 @@ public class WrapAround : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Bullet"))
-        {
-            return;
-        }
-
         if (Direction.Equals("Horizontal"))
         {
             float y = collision.transform.position.y;

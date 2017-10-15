@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bullet
   - WrapAround
+  - Ship
   layers:
   - Default
   - TransparentFX
