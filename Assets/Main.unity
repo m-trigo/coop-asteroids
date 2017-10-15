@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 194274764}
   m_Layer: 0
   m_Name: South
-  m_TagString: Untagged
+  m_TagString: WrapAround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 356732264}
   m_Layer: 0
   m_Name: North
-  m_TagString: Untagged
+  m_TagString: WrapAround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 465581303}
   m_Layer: 0
   m_Name: West
-  m_TagString: Untagged
+  m_TagString: WrapAround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -410,7 +410,7 @@ GameObject:
   - component: {fileID: 1841986636}
   m_Layer: 0
   m_Name: East
-  m_TagString: Untagged
+  m_TagString: WrapAround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
