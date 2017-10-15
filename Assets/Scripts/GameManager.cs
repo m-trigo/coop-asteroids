@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -36,7 +37,7 @@ public class GameManager : MonoBehaviour
         Player2Ship.transform.Translate(Vector2.right * 2);
         for (int i = 0; i < INITIAL_SPAWN_AMOUNT; i++)
         {
-            //SpawnMeteor();
+            SpawnMeteor();
         }
 
         CanP1Shoot = true;
@@ -131,13 +132,18 @@ public class GameManager : MonoBehaviour
 
     private void Update ()
     {
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            SceneManager.LoadScene("Main");
+        }
+
         ReadControllerInput(Player1Ship, 1);
         ReadControllerInput(Player2Ship, 2);
 
         timeSinceLastSpawn += Time.deltaTime;
         if (timeSinceLastSpawn > SPAWN_PERIOD_IN_SECONDS)
         {
-            //SpawnMeteor();
+            SpawnMeteor();
             timeSinceLastSpawn = 0;
         }
     }
